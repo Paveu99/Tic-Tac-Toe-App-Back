@@ -1,0 +1,33 @@
+{
+  "name": "tictactoeback",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "https://github.com/Paveu99/Tic-Tac-Toe-App-Back.git",
+  "author": "Paweł Jarecki <paweljarecki10@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "start:dev": "tsnd index.ts",
+    "build": "tsc",
+    "serve": "serve dist"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "mysql2": "^3.9.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.19",
+    "@types/node-fetch": "^2.6.11",
+    "@types/uuid": "^9.0.8",
+    "node-fetch": "^3.3.2",
+    "serve": "^14.2.1",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}
