@@ -70,12 +70,12 @@ export class MatchRecord implements MatchEntity {
     async updateRecord(body: MatchEntity): Promise<void> {
         await pool.execute("UPDATE `results` SET `player1` = :player1, `player2` = :player2, `gameTime` = :gameTime, `numberOfMoves` = :numberOfMoves, `winner` = :winner, `date` = :date WHERE `id` = :id", {
             id: this.id,
-            player1: this.player1,
-            player2: this.player2,
-            gameTime: this.gameTime,
-            numberOfMoves: this.numberOfMoves,
-            winner: this.winner,
-            date: this.date,
+            player1: body.player1,
+            player2: body.player2,
+            gameTime: body.gameTime,
+            numberOfMoves: body.numberOfMoves,
+            winner: body.winner,
+            date: body.date,
         });
     };
 
