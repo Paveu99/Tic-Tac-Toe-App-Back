@@ -29,9 +29,9 @@ export class MatchRecord implements MatchEntity {
             const [results] = await pool.execute("SELECT * FROM `results`") as MatchRecordResults;
 
             results.forEach((expense: any) => {
-                const parsedDate: Date = new Date(expense.month);
+                const parsedDate: Date = new Date(expense.date);
                 parsedDate.setDate(parsedDate.getDate() + 1);
-                expense.month = parsedDate.toISOString().split('T')[0];
+                expense.date = parsedDate.toISOString().split('T')[0];
             });
 
             return results.map(obj => new MatchRecord(obj));
@@ -43,9 +43,9 @@ export class MatchRecord implements MatchEntity {
         }) as MatchRecordResults;
 
         results.forEach((expense: any) => {
-            const parsedDate: Date = new Date(expense.month);
+            const parsedDate: Date = new Date(expense.date);
             parsedDate.setDate(parsedDate.getDate() + 1);
-            expense.month = parsedDate.toISOString().split('T')[0];
+            expense.date = parsedDate.toISOString().split('T')[0];
         });
 
         return results.length === 0 ? null : new MatchRecord(results[0])
@@ -57,6 +57,18 @@ export class MatchRecord implements MatchEntity {
         }
 
         await pool.execute("INSERT INTO `results` VALUES(:id, :player1, :player2, :gameTime, :numberOfMoves, :winner, :date)", {
+            id: this.id,
+            player1: this.player1,
+            player2: this.player2,
+            gameTime: this.gameTime,
+            numberOfMoves: this.numberOfMoves,
+            winner: this.winner,
+            date: this.date,
+        });
+    };
+
+    async updateRecord(body: MatchEntity): Promise<void> {
+        await pool.execute("UPDATE `results` SET `player1` = :player1, `player2` = :player2, `gameTime` = :gameTime, `numberOfMoves` = :numberOfMoves, `winner` = :winner, `date` = :date WHERE `id` = :id", {
             id: this.id,
             player1: this.player1,
             player2: this.player2,
