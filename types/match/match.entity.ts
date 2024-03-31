@@ -2,8 +2,8 @@ export interface MatchEntity {
     id?: string,
     player1: string,
     player2: string,
-    gameTime: number,
     winner: string,
-    numberOfMoves: number,
+    player1Result: number,
+    player2Result: number,
     date: string,
 }
