@@ -6,7 +6,7 @@ import {matchRouter} from "./routers/match";
 const app = express()
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:5173'
 }));
 
 app.use(json());
