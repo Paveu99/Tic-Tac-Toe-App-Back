@@ -55,7 +55,7 @@ export class MatchRecord implements MatchEntity {
             this.id = uuid()
         }
 
-        await pool.execute("INSERT INTO `results` VALUES(:id, :player1, :player2, :gameTime, :numberOfMoves, :winner, :date)", {
+        await pool.execute("INSERT INTO `results` VALUES(:id, :player1, :player2, :winner, :player1Result, :player2Result, :date)", {
             id: this.id,
             player1: this.player1,
             player2: this.player2,
