@@ -1,16 +1,15 @@
 import {MatchEntity} from "../types";
 import {pool} from "../utils/db";
-import {FieldPacket} from "mysql2"
-import {v4 as uuid} from "uuid"
-import { format } from 'date-fns';
+import {FieldPacket} from "mysql2";
+import {v4 as uuid} from "uuid";
 
 type MatchRecordResults =[MatchRecord[], FieldPacket[]];
 
 export class MatchRecord implements MatchEntity {
     public player1: string;
     public player2: string;
-    public gameTime: number;
-    public numberOfMoves: number;
+    public player1Result: number;
+    public player2Result: number;
     public id: string;
     public date: string;
     public winner: string;
@@ -19,8 +18,8 @@ export class MatchRecord implements MatchEntity {
         this.id = obj.id;
         this.player1 = obj.player1;
         this.player2 = obj.player2;
-        this.gameTime = obj.gameTime;
-        this.numberOfMoves = obj.numberOfMoves;
+        this.player1Result = obj.player1Result;
+        this.player2Result = obj.player2Result;
         this.winner = obj.winner;
         this.date = obj.date;
     };
@@ -60,20 +59,20 @@ export class MatchRecord implements MatchEntity {
             id: this.id,
             player1: this.player1,
             player2: this.player2,
-            gameTime: this.gameTime,
-            numberOfMoves: this.numberOfMoves,
+            player1Result: this.player1Result,
+            player2Result: this.player2Result,
             winner: this.winner,
             date: this.date,
         });
     };
 
     async updateRecord(body: MatchEntity): Promise<void> {
-        await pool.execute("UPDATE `results` SET `player1` = :player1, `player2` = :player2, `gameTime` = :gameTime, `numberOfMoves` = :numberOfMoves, `winner` = :winner, `date` = :date WHERE `id` = :id", {
+        await pool.execute("UPDATE `results` SET `player1` = :player1, `player2` = :player2, `player1Result` = :player1Result, `player2Result` = :player2Result, `winner` = :winner, `date` = :date WHERE `id` = :id", {
             id: this.id,
             player1: body.player1,
             player2: body.player2,
-            gameTime: body.gameTime,
-            numberOfMoves: body.numberOfMoves,
+            player1Result: body.player1Result,
+            player2Result: body.player2Result,
             winner: body.winner,
             date: body.date,
         });
