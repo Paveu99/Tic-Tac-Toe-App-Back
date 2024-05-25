@@ -28,9 +28,7 @@ export class MatchRecord implements MatchEntity {
             const [results] = await pool.execute("SELECT * FROM `results`") as MatchRecordResults;
 
             results.forEach((expense: any) => {
-                const parsedDate: Date = new Date(expense.date);
-                parsedDate.setDate(parsedDate.getDate() + 1);
-                expense.date = parsedDate.toISOString().split('T')[0];
+                expense.date = expense.date.split(" ")[1]
             });
 
             return results.map(obj => new MatchRecord(obj));
