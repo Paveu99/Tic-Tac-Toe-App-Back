@@ -7,7 +7,7 @@ import morgan from "morgan";
 const app = express()
 
 app.use(cors({
-    origin: ['http://localhost:5173']
+    origin: ['http://localhost:5173', 'http://192.168.68.107:5173']
 }));
 
 app.use(morgan("dev"))
