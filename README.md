@@ -19,8 +19,8 @@ Download TicTacToe Duo now and turn every moment into a playful challenge. Wheth
 
 # Demo
 Here is a demonstration how it works:
-- Mobile: https://youtube.com/shorts/iIvgWyHG9gU
-- Desktop: https://youtu.be/oqg6wR8H-go
+- Mobile: https://youtu.be/HIQA4R3LPUM
+- Desktop: https://youtu.be/hSQRWl_DSG8
 
 To run the application, follow these steps:
 
